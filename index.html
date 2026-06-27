@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>I-APP 1/2569 Schedule</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/27Dm6KwS/26-20260627132031.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset & Fixed Layout Setup */
+        /* CSS Reset & Fixed Premium Layout Setup */
         * { 
             box-sizing: border-box; 
             margin: 0;
@@ -15,81 +17,113 @@
         }
         
         body {
-            background: #f4f7fa;
+            background: #f1f5f9;
             padding: 40px;
             font-family: 'Anuphan', sans-serif;
-            min-width: 1360px; /* บังคับขนาดหน้าต่างขั้นต่ำไม่ให้เบียดกัน */
+            min-width: 1360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* Container กำหนดขนาดคงที่เด็ดขาดที่ 1280px x 720px ไม่ยืดหดตามหน้าจอ */
+        /* 16:9 Fixed Canvas Container with Cyber Glassmorphism Look */
         .slide-container {
             width: 1280px;
             height: 720px;
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-            padding: 50px 40px 85px 40px; /* เพิ่มระยะห่างด้านล่างอย่างเต็มที่ */
-            margin: 0 auto; /* จัดกึ่งกลางหน้าจอคอมพิวเตอร์ */
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 32px;
+            box-shadow: 0 30px 70px -15px rgba(15, 23, 42, 0.12),
+                        0 0 0 1px rgba(15, 23, 42, 0.02);
+            padding: 45px 40px 85px 40px;
             position: relative;
             overflow: hidden;
-            display: block; /* ยกเลิก flex layout ที่อาจทำให้องค์ประกอบขยับ */
+            display: block;
         }
 
-        /* Background Decorative Blobs */
+        /* Premium Dynamic Glow Background Blobs */
         .bg-blob {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, rgba(255, 255, 255, 0) 70%);
+            width: 700px;
+            height: 700px;
             border-radius: 50%;
             z-index: 1;
-            filter: blur(50px);
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: floatGlow 10s ease-in-out infinite alternate;
         }
-        .blob-1 { top: -250px; right: -150px; }
-        .blob-2 { bottom: -250px; left: -150px; }
+        .blob-1 { 
+            top: -300px; 
+            right: -200px; 
+            background: radial-gradient(circle, #818cf8 0%, rgba(255, 255, 255, 0) 70%);
+        }
+        .blob-2 { 
+            bottom: -350px; 
+            left: -200px; 
+            background: radial-gradient(circle, #c084fc 0%, rgba(255, 255, 255, 0) 70%);
+            animation-delay: -5s;
+        }
 
-        /* Header อยู่ตรงกลาง ขนาดคงที่ */
-        .header-section {
-            text-align: center;
-            margin-bottom: 40px;
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 20px) scale(1.1); }
+        }
+
+        /* Header Layout updated with Avatar Icon alongside the Title */
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 35px;
             position: relative;
             z-index: 2;
+        }
+
+        .header-avatar {
+            width: 76px;
+            height: 76px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+            border: 3px solid #ffffff;
+            background: #ffffff;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .header-avatar:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .header-content-box {
+            text-align: left;
         }
 
         .header-subtitle {
             font-family: 'Prompt', sans-serif;
             font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #6366f1;
+            letter-spacing: 5px;
+            color: #4f46e5;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 2px;
         }
 
-        .header-section h1 {
+        .header-title-text {
             font-family: 'Prompt', sans-serif;
-            font-size: 44px;
+            font-size: 42px;
             color: #0f172a;
-            font-weight: 700;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 12px;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #0f172a 30%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .header-section h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 4px;
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            border-radius: 2px;
-        }
-
-        /* ตารางสถาปัตยกรรมแบบขนาดคงที่ */
+        /* Fixed Architecture Table */
         .table-wrapper {
-            width: 1200px; /* กำหนดขนาดความกว้างตารางคงที่ */
+            width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -98,29 +132,30 @@
         table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 4px;
-            table-layout: fixed; /* บังคับให้ช่องความกว้างเท่ากันเป๊ะตามจำนวน col */
+            border-spacing: 5px;
+            table-layout: fixed;
         }
 
-        /* ขนาดคอลัมน์คงที่ */
         th, td {
             text-align: center;
             vertical-align: middle;
         }
 
         th.day-column-header, td.day-label {
-            width: 70px; /* ล็อคความกว้างช่องชื่อวัน */
+            width: 75px;
         }
 
-        /* หัวข้อเวลาด้านบน */
+        /* Glassmorphism Column Headers */
         th {
-            background: #1e293b;
+            background: #0f172a;
             color: #94a3b8;
             font-size: 10px;
-            padding: 8px 0;
+            padding: 10px 0;
             font-weight: 500;
-            border-radius: 5px;
+            border-radius: 8px;
             line-height: 1.3;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         th span {
@@ -128,21 +163,24 @@
             font-weight: 600;
             font-size: 10.5px;
             display: block;
+            margin-top: 2px;
         }
 
         th.day-column-header {
             font-size: 14px;
-            background: #4f46e5;
+            background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        /* ช่องตารางเรียนปกติ (ความสูงคงที่) */
+        /* Grid Background Structure with Subtle Neon Gradients */
         td {
-            height: 66px; /* ล็อคความสูงช่องตารางทั้งหมด */
-            background: rgba(241, 245, 249, 0.6);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 6px;
+            height: 64px;
+            background: rgba(248, 250, 252, 0.7);
+            border: 1px solid rgba(226, 232, 240, 0.7);
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
 
         td.day-label {
@@ -150,27 +188,38 @@
             font-weight: 700;
             font-size: 14px;
             border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        /* การ์ดวิชาขนาดล็อกคงที่ */
+        /* High-End Dynamic Subject Cards */
         .subject-card {
             width: 100%;
             height: 100%;
-            padding: 4px 6px;
-            border-radius: 6px;
+            padding: 5px 8px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #1e293b;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-            border-left: 4px solid transparent;
+            box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.08);
+            border-left: 5px solid transparent;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Micro-interactions / Hover Animation Playfulness */
+        .subject-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px -8px rgba(15, 23, 42, 0.15);
+            z-index: 10;
         }
 
         .sub-code {
             font-size: 9.5px;
             font-weight: 700;
-            opacity: 0.8;
+            opacity: 0.75;
             letter-spacing: 0.3px;
         }
 
@@ -183,6 +232,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             width: 100%;
+            letter-spacing: -0.1px;
         }
 
         .sub-name-th {
@@ -196,42 +246,50 @@
             width: 100%;
         }
 
+        /* Rounded Capsule for Section Code with solid black text and crisp borders */
         .sub-sec {
             background: #ffffff;
             color: #000000;
-            padding: 1px 8px;
+            padding: 1px 9px;
             border-radius: 20px;
             font-weight: 700;
             font-size: 9.5px;
-            margin-top: 3px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.1);
+            margin-top: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+        }
+        
+        .subject-card:hover .sub-sec {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
         }
 
-        /* สีพาสเทลแบ่งตามวิชา */
-        .card-english { background: #fef08a; border-left-color: #eab308; }
-        .card-media { background: #e9d5ff; border-left-color: #a855f7; }
-        .card-drawing { background: #fed7aa; border-left-color: #f97316; }
-        .card-graphics { background: #c7d2fe; border-left-color: #6366f1; }
-        .card-programming { background: #bbf7d0; border-left-color: #22c55e; }
-        .card-design { background: #fecdd3; border-left-color: #f43f5e; }
-        .card-silpakorn { background: #99f6e4; border-left-color: #0d9488; }
+        /* Vibrantly tuned Pastel Glow Palettes */
+        .card-english { background: #fef9c3; border-left-color: #eab308; }
+        .card-media { background: #f3e8ff; border-left-color: #a855f7; }
+        .card-drawing { background: #ffedd5; border-left-color: #f97316; }
+        .card-graphics { background: #e0e7ff; border-left-color: #6366f1; }
+        .card-programming { background: #dcfce7; border-left-color: #22c55e; }
+        .card-design { background: #ffe4e6; border-left-color: #f43f5e; }
+        .card-silpakorn { background: #ccfbf1; border-left-color: #0d9488; }
     </style>
 </head>
 <body>
 
 <div class="slide-container">
-    <!-- Background Decor -->
     <div class="bg-blob blob-1"></div>
     <div class="bg-blob blob-2"></div>
 
-    <!-- Centered Header -->
-    <div class="header-section">
-        <div class="header-subtitle">SILPAKORN UNIVERSITY</div>
-        <h1>I-APP 1/2569</h1>
+    <div class="header-wrapper">
+        <img src="https://i.ibb.co/27Dm6KwS/26-20260627132031.png" alt="Icon" class="header-avatar">
+        <div class="header-content-box">
+            <div class="header-subtitle">Silpakorn University</div>
+            <div class="header-title-text">I-APP 1/2569</div>
+        </div>
     </div>
 
-    <!-- Fixed Width Table Wrapper -->
     <div class="table-wrapper">
         <table>
             <thead>
@@ -255,9 +313,8 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- MONDAY -->
                 <tr>
-                    <td class="day-label" style="background: #fef08a; color: #854d0e;">MON</td>
+                    <td class="day-label" style="background: #fef9c3; color: #854d0e;">MON</td>
                     <td></td><td></td>
                     <td colspan="2">
                         <div class="subject-card card-english">
@@ -287,9 +344,8 @@
                     <td></td><td></td><td></td><td></td><td></td>
                 </tr>
 
-                <!-- TUESDAY -->
                 <tr>
-                    <td class="day-label" style="background: #fecdd3; color: #9f1239;">TUE</td>
+                    <td class="day-label" style="background: #ffe4e6; color: #9f1239;">TUE</td>
                     <td></td>
                     <td colspan="2">
                         <div class="subject-card card-drawing">
@@ -327,9 +383,8 @@
                     <td></td>
                 </tr>
 
-                <!-- WEDNESDAY -->
                 <tr>
-                    <td class="day-label" style="background: #bbf7d0; color: #166534;">WED</td>
+                    <td class="day-label" style="background: #dcfce7; color: #166534;">WED</td>
                     <td></td><td></td>
                     <td colspan="2">
                         <div class="subject-card card-english">
@@ -342,9 +397,8 @@
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 </tr>
 
-                <!-- THURSDAY -->
                 <tr>
-                    <td class="day-label" style="background: #fed7aa; color: #9a3412;">THU</td>
+                    <td class="day-label" style="background: #ffedd5; color: #9a3412;">THU</td>
                     <td></td>
                     <td colspan="2">
                         <div class="subject-card card-programming">
@@ -365,42 +419,4 @@
                     <td></td>
                     <td colspan="2">
                         <div class="subject-card card-design">
-                            <span class="sub-code">802112-169 (3)</span>
-                            <span class="sub-name-en">PRINCIPLES OF DESIGN I</span>
-                            <span class="sub-name-th">หลักการออกแบบ 1</span>
-                            <span class="sub-sec">Sec 1302</span>
-                        </div>
-                    </td>
-                    <td colspan="2">
-                        <div class="subject-card card-design">
-                            <span class="sub-code">802112-169 (3)</span>
-                            <span class="sub-name-en">PRINCIPLES OF DESIGN I</span>
-                            <span class="sub-name-th">หลักการออกแบบ 1</span>
-                            <span class="sub-sec">Sec 1302</span>
-                        </div>
-                    </td>
-                    <td></td><td></td><td></td><td></td>
-                </tr>
-
-                <!-- FRIDAY -->
-                <tr>
-                    <td class="day-label" style="background: #bae6fd; color: #075985;">FRI</td>
-                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    <td colspan="3">
-                        <div class="subject-card card-silpakorn">
-                            <span class="sub-code">SU001002-166 (3)</span>
-                            <span class="sub-name-en">CREATIVE SILPAKORN</span>
-                            <span class="sub-name-th">ศิลปากรสร้างสรรค์</span>
-                            <span class="sub-sec">Sec 3003</span>
-                        </div>
-                    </td>
-                    <td></td><td></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-</body>
-</html>
-
+                            <span class="sub-code
