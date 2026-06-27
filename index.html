@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset & Fixed Premium Layout Setup */
         * { 
             box-sizing: border-box; 
             margin: 0;
@@ -27,7 +26,7 @@
             min-height: 100vh;
         }
 
-        /* 16:9 Fixed Canvas Container with Cyber Glassmorphism Look */
+        /* 16:9 Fixed Canvas Container */
         .slide-container {
             width: 1280px;
             height: 720px;
@@ -43,7 +42,7 @@
             display: block;
         }
 
-        /* Premium Dynamic Glow Background Blobs */
+        /* Background Blobs Animation */
         .bg-blob {
             position: absolute;
             width: 700px;
@@ -71,7 +70,7 @@
             100% { transform: translate(30px, 20px) scale(1.1); }
         }
 
-        /* Header Layout updated with Avatar Icon alongside the Title */
+        /* Header Layout */
         .header-wrapper {
             display: flex;
             align-items: center;
@@ -121,7 +120,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Fixed Architecture Table */
+        /* Fixed Table */
         .table-wrapper {
             width: 1200px;
             margin: 0 auto;
@@ -145,7 +144,6 @@
             width: 75px;
         }
 
-        /* Glassmorphism Column Headers */
         th {
             background: #0f172a;
             color: #94a3b8;
@@ -174,7 +172,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Grid Background Structure with Subtle Neon Gradients */
         td {
             height: 64px;
             background: rgba(248, 250, 252, 0.7);
@@ -191,7 +188,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        /* High-End Dynamic Subject Cards */
+        /* Subject Cards */
         .subject-card {
             width: 100%;
             height: 100%;
@@ -206,10 +203,8 @@
             border-left: 5px solid transparent;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
-            position: relative;
         }
 
-        /* Micro-interactions / Hover Animation Playfulness */
         .subject-card:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 12px 25px -8px rgba(15, 23, 42, 0.15);
@@ -232,7 +227,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             width: 100%;
-            letter-spacing: -0.1px;
         }
 
         .sub-name-th {
@@ -246,7 +240,6 @@
             width: 100%;
         }
 
-        /* Rounded Capsule for Section Code with solid black text and crisp borders */
         .sub-sec {
             background: #ffffff;
             color: #000000;
@@ -266,7 +259,7 @@
             border-color: #0f172a;
         }
 
-        /* Vibrantly tuned Pastel Glow Palettes */
+        /* Color Themes */
         .card-english { background: #fef9c3; border-left-color: #eab308; }
         .card-media { background: #f3e8ff; border-left-color: #a855f7; }
         .card-drawing { background: #ffedd5; border-left-color: #f97316; }
@@ -355,7 +348,7 @@
                             <span class="sub-sec">Sec 1302</span>
                         </div>
                     </td>
-                    <td colspan="3">
+                    <td colspan="2">
                         <div class="subject-card card-drawing">
                             <span class="sub-code">802111-169 (3)</span>
                             <span class="sub-name-en">FUNDAMENTALS OF DRAWING IN DESIGN</span>
@@ -408,7 +401,7 @@
                             <span class="sub-sec">Sec 1305</span>
                         </div>
                     </td>
-                    <td colspan="3">
+                    <td colspan="2">
                         <div class="subject-card card-programming">
                             <span class="sub-code">800101-169 (3)</span>
                             <span class="sub-name-en">COMPUTER PROGRAMMING FOR DIGITAL TECH I</span>
@@ -416,7 +409,44 @@
                             <span class="sub-sec">Sec 1305</span>
                         </div>
                     </td>
-                    <td></td>
+                    <td></td><td></td>
                     <td colspan="2">
                         <div class="subject-card card-design">
-                            <span class="sub-code
+                            <span class="sub-code">802112-169 (3)</span>
+                            <span class="sub-name-en">PRINCIPLES OF DESIGN I</span>
+                            <span class="sub-name-th">หลักการออกแบบ 1</span>
+                            <span class="sub-sec">Sec 1302</span>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="subject-card card-design">
+                            <span class="sub-code">802112-169 (3)</span>
+                            <span class="sub-name-en">PRINCIPLES OF DESIGN I</span>
+                            <span class="sub-name-th">หลักการออกแบบ 1</span>
+                            <span class="sub-sec">Sec 1302</span>
+                        </div>
+                    </td>
+                    <td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="day-label" style="background: #e0f2fe; color: #075985;">FRI</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td colspan="3">
+                        <div class="subject-card card-silpakorn">
+                            <span class="sub-code">SU001002-166 (3)</span>
+                            <span class="sub-name-en">CREATIVE SILPAKORN</span>
+                            <span class="sub-name-th">ศิลปากรสร้างสรรค์</span>
+                            <span class="sub-sec">Sec 3003</span>
+                        </div>
+                    </td>
+                    <td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
+
