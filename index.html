@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I-APP 1/2569 Schedule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;500;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Layout Setup */
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: #f4f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Anuphan', sans-serif;
+        }
+
+        /* Container Styled as a 16:9 Premium Slide Canvas */
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            padding: 40px 40px 75px 40px; /* เพิ่ม Padding ด้านล่าง 75px ให้ไม่ติดขอบ */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Aesthetic Background Decorative Blobs */
+        .bg-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(50px);
+        }
+        .blob-1 { top: -250px; right: -150px; }
+        .blob-2 { bottom: -250px; left: -150px; }
+
+        /* Centered Header Section */
+        .header-section {
+            text-align: center;
+            margin-bottom: 35px;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            font-family: 'Prompt', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #6366f1;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .header-section h1 {
+            font-family: 'Prompt', sans-serif;
+            font-size: 44px;
+            color: #0f172a;
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .header-section h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            border-radius: 2px;
+        }
+
+        /* Table Architecture with Safe Dimensions */
+        .table-wrapper {
+            flex-grow: 1;
+            width: 100%;
+            z-index: 2;
+            display: flex;
+            align-items: center; /* ช่วยจัดตารางให้อยู่กึ่งกลางในพื้นที่แนวตั้ง */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 3px;
+            table-layout: fixed;
+        }
+
+        /* Column Time Headers */
+        th {
+            background: #1e293b;
+            color: #94a3b8;
+            font-size: 10.5px;
+            padding: 8px 3px;
+            font-weight: 500;
+            text-align: center;
+            border-radius: 4px;
+            line-height: 1.3;
+        }
+
+        th span {
+            color: #f8fafc;
+            font-weight: 600;
+            font-size: 11px;
+            display: block;
+        }
+
+        th.day-column-header {
+            width: 75px;
+            font-size: 14px;
+            background: #4f46e5;
+            color: #ffffff;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        /* Empty & Day Label Cells */
+        td {
+            height: 64px; /* ปรับความสูงช่องให้สมดุลพอดีสไลด์ */
+            background: rgba(241, 245, 249, 0.5);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            border-radius: 6px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td.day-label {
+            font-family: 'Prompt', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Premium Subject Card Components */
+        .subject-card {
+            height: 100%;
+            padding: 5px 8px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #1e293b;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .sub-code {
+            font-size: 9.5px;
+            font-weight: 700;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-name-en {
+            font-size: 10.5px;
+            font-weight: 700;
+            margin: 1px 0;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .sub-name-th {
+            font-size: 9.5px;
+            font-weight: 500;
+            opacity: 0.8;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .sub-sec {
+            background: rgba(255, 255, 255, 0.8);
+            color: #000000; /* บังคับตัวอักษร Sec สีดำสนิททั้งหมดตามคำขอ */
+            padding: 1px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 9.5px;
+            margin-top: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Sophisticated Pastel Palette Mapping */
+        .card-english { background: #fef08a; border-left-color: #eab308; }
+        .card-media { background: #e9d5ff; border-left-color: #a855f7; }
+        .card-drawing { background: #fed7aa; border-left-color: #f97316; }
+        .card-graphics { background: #c7d2fe; border-left-color: #6366f1; }
+        .card-programming { background: #bbf7d0; border-left-color: #22c55e; }
+        .card-design { background: #fecdd3; border-left-color: #f43f5e; }
+        .card-silpakorn { background: #99f6e4; border-left-color: #0d9488; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <div class="header-section">
+        <div class="header-subtitle">SILPAKORN UNIVERSITY</div>
+        <h1>I-APP 1/2569</h1>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="day-column-header">DAY</th>
+                    <th>08:30<br><span>09:20</span></th>
+                    <th>09:25<br><span>10:15</span></th>
+                    <th>10:20<br><span>11:10</span></th>
+                    <th>11:15<br><span>12:05</span></th>
+                    <th>12:10<br><span>12:55</span></th>
+                    <th>13:00<br><span>13:50</span></th>
+                    <th>13:55<br><span>14:45</span></th>
+                    <th>14:50<br><span>15:40</span></th>
+                    <th>15:45<br><span>16:35</span></th>
+                    <th>16:40<br><span>17:30</span></th>
+                    <th>17:35<br><span>18:25</span></th>
+                    <th>18:30<br><span>19:20</span></th>
+                    <th>19:25<br><span>20:15</span></th>
+                    <th>20:20<br><span>21:10</span></th>
+                    <th>21:15<br><span>22:05</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day-label" style="background: #fef08a; color: #854d0e;">MON</td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-english">
+                            <span class="sub-code">SU002001-166 (3)</span>
+                            <span class="sub-name-en">COMMUNICATIVE ENGLISH IN DIGITAL ERA</span>
+                            <span class="sub-name-th">ภาษาอังกฤษเพื่อการสื่อสารในยุคดิจิทัล</span>
+                            <span class="sub-sec">Sec 3202</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-media">
+                            <span class="sub-code">802131-169 (3)</span>
+                            <span class="sub-name-en">DYNAMICS & TRENDS IN INTERACTIVE MEDIA</span>
+                            <span class="sub-name-th">พลวัตและแนวโน้มสื่ออินเทอร์แอคทีฟ</span>
+                            <span class="sub-sec">Sec 1301</span>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="subject-card card-media">
+                            <span class="sub-code">802131-169 (3)</span>
+                            <span class="sub-name-en">DYNAMICS & TRENDS IN INTERACTIVE MEDIA</span>
+                            <span class="sub-name-th">พลวัตและแนวโน้มสื่ออินเทอร์แอคทีฟ</span>
+                            <span class="sub-sec">Sec 1301</span>
+                        </div>
+                    </td>
+                    <td></td><td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="day-label" style="background: #fecdd3; color: #9f1239;">TUE</td>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-drawing">
+                            <span class="sub-code">802111-169 (3)</span>
+                            <span class="sub-name-en">FUNDAMENTALS OF DRAWING IN DESIGN</span>
+                            <span class="sub-name-th">พื้นฐานการวาดเส้นในงานออกแบบ</span>
+                            <span class="sub-sec">Sec 1302</span>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div class="subject-card card-drawing">
+                            <span class="sub-code">802111-169 (3)</span>
+                            <span class="sub-name-en">FUNDAMENTALS OF DRAWING IN DESIGN</span>
+                            <span class="sub-name-th">พื้นฐานการวาดเส้นในงานออกแบบ</span>
+                            <span class="sub-sec">Sec 1302</span>
+                        </div>
+                    </td>
+                    <td></td><td></td><td></td><td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-graphics">
+                            <span class="sub-code">802113-169 (3)</span>
+                            <span class="sub-name-en">COMPUTER GRAPHICS</span>
+                            <span class="sub-name-th">คอมพิวเตอร์กราฟิก</span>
+                            <span class="sub-sec">Sec 1303</span>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="subject-card card-graphics">
+                            <span class="sub-code">802113-169 (3)</span>
+                            <span class="sub-name-en">COMPUTER GRAPHICS</span>
+                            <span class="sub-name-th">คอมพิวเตอร์กราฟิก</span>
+                            <span class="sub-sec">Sec 1303</span>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="day-label" style="background: #bbf7d0; color: #166534;">WED</td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-english">
+                            <span class="sub-code">SU002001-166 (3)</span>
+                            <span class="sub-name-en">COMMUNICATIVE ENGLISH IN DIGITAL ERA</span>
+                            <span class="sub-name-th">ภาษาอังกฤษเพื่อการสื่อสารในยุคดิจิทัล</span>
+                            <span class="sub-sec">Sec 3202</span>
+                        </div>
+                    </td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="day-label" style="background: #fed7aa; color: #9a3412;">THU</td>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-programming">
+                            <span class="sub-code">800101-169 (3)</span>
+                            <span class="sub-name-en">COMPUTER PROGRAMMING FOR DIGITAL TECH I</span>
+                            <span class="sub-name-th">การโปรแกรมคอมพิวเตอร์สำหรับเทคโนโลยีดิจิทัล 1</span>
+                            <span class="sub-sec">Sec 1305</span>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <div class="subject-card card-programming">
+                            <span class="sub-code">800101-169 (3)</span>
+                            <span class="sub-name-en">COMPUTER PROGRAMMING FOR DIGITAL TECH I</span>
+                            <span class="sub-name-th">การโปรแกรมคอมพิวเตอร์สำหรับเทคโนโลยีดิจิทัล 1</span>
+                            <span class="sub-sec">Sec 1305</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td colspan="2">
+                        <div class="subject-card card-design">
+                            <span class="sub-code">802112-169 (3)</span>
+                            <span class="sub-name-en">PRINCIPLES OF DESIGN I</span>
+                            <span class="sub-name-th">หลักการออกแบบ 1</span>
+                            <span class="sub-sec">Sec 1302</span>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="subject-card card-design">
+                            <span class="sub-code">802112-169 (3)</span>
+                            <span class="sub-name-en">PRINCIPLES OF DESIGN I</span>
+                            <span class="sub-name-th">หลักการออกแบบ 1</span>
+                            <span class="sub-sec">Sec 1302</span>
+                        </div>
+                    </td>
+                    <td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="day-label" style="background: #bae6fd; color: #075985;">FRI</td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td colspan="3">
+                        <div class="subject-card card-silpakorn">
+                            <span class="sub-code">SU001002-166 (3)</span>
+                            <span class="sub-name-en">CREATIVE SILPAKORN</span>
+                            <span class="sub-name-th">ศิลปากรสร้างสรรค์</span>
+                            <span class="sub-sec">Sec 3003</span>
+                        </div>
+                    </td>
+                    <td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
